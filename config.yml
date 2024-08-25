@@ -1,0 +1,15 @@
+server_name: go.scout.ch
+connections: 4096
+forwards:
+  de:
+    qrcube:
+      zelt: https://pfadi.swiss/de/
+      buch: https://pfadi.swiss/de/
+      feuer: https://pfadi.swiss/de/
+      kompass: https://pfadi.swiss/de/
+  fr:
+    qrcube:
+      tente: https://pfadi.swiss/fr/
+      livre: https://pfadi.swiss/fr/
+      feu: https://pfadi.swiss/fr/
+      compass: https://pfadi.swiss/fr/
