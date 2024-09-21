@@ -7,9 +7,11 @@ forwards:
       buch: https://pfadi.swiss/de/
       feuer: https://pfadi.swiss/de/
       kompass: https://pfadi.swiss/de/
+    it-richtlinien: https://scout-ch.github.io/it-guidelines/
   fr:
     qrcube:
       tente: https://pfadi.swiss/fr/
       livre: https://pfadi.swiss/fr/
       feu: https://pfadi.swiss/fr/
       compass: https://pfadi.swiss/fr/
+  
