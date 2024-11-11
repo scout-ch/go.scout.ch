@@ -3,10 +3,10 @@ connections: 4096
 forwards:
   de:
     qrcube:
-      zelt: https://pfadi.swiss/de/
-      buch: https://pfadi.swiss/de/
-      feuer: https://pfadi.swiss/de/
-      kompass: https://pfadi.swiss/de/
+      zelt: https://pfadi.swiss/wueferl/lagerplatz-pfadiheim-verzeichnis/
+      buch: https://pfadi.swiss/de/wuerfel/digitale-hilfsmittel/
+      feuer: https://pfadi.swiss/de/wuerfel/it-community/
+      kompass: https://pfadi.swiss/wuerfel/it-tools/
     it-richtlinien: https://scout-ch.github.io/it-guidelines/
   fr:
     qrcube:
