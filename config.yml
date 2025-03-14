@@ -3,7 +3,7 @@ connections: 4096
 forwards:
   de:
     qrcube:
-      zelt: https://pfadi.swiss/wuerfel/lagerplatz-pfadiheim-verzeichnis/
+      zelt: https://pfadi.swiss/wuerfel/lagerplatz-pfadiheim-verzeichnis
       buch: https://pfadi.swiss/de/wuerfel/digitale-hilfsmittel/
       feuer: https://pfadi.swiss/de/wuerfel/it-community/
       kompass: https://pfadi.swiss/wuerfel/it-tools/
