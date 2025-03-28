@@ -7,11 +7,12 @@ forwards:
       buch: https://pfadi.swiss/de/wuerfel/digitale-hilfsmittel/
       feuer: https://pfadi.swiss/de/wuerfel/it-community/
       kompass: https://pfadi.swiss/wuerfel/it-tools/
-    it-richtlinien: https://scout-ch.github.io/it-guidelines/
+    itkompass: https://itkompass.scout.ch
   fr:
     qrcube:
       tente: https://pfadi.swiss/fr/
       livre: https://pfadi.swiss/fr/
       feu: https://pfadi.swiss/fr/
       compass: https://pfadi.swiss/fr/
-  
+  qr:
+    itkom-plakat: https://itkompass.scout.ch
