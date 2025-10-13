@@ -14,7 +14,7 @@ RUN python generate_nginx_config.py > nginx.conf
 ############################################################################################################
 # RELEASE
 ############################################################################################################
-FROM nginx:1.27.4 AS release
+FROM nginx:1.29.2 AS release
 
 # Path: /etc/nginx/nginx.conf
 COPY --from=build nginx.conf /etc/nginx/nginx.conf
