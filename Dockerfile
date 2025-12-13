@@ -1,7 +1,7 @@
 ############################################################################################################
 # BUILD
 ############################################################################################################
-FROM python:3.13.2 AS build
+FROM python:3.14.2 AS build
 
 # Install dependencies
 COPY ./requirements.txt /requirements.txt
@@ -14,7 +14,7 @@ RUN python generate_nginx_config.py > nginx.conf
 ############################################################################################################
 # RELEASE
 ############################################################################################################
-FROM nginx:1.27.4 AS release
+FROM nginx:1.29.4 AS release
 
 # Path: /etc/nginx/nginx.conf
 COPY --from=build nginx.conf /etc/nginx/nginx.conf
