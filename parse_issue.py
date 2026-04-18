@@ -20,9 +20,6 @@ url = extract_field("Target URL", body)
 
 # Validate path: 2 or 3 slash-separated segments, safe characters only
 segments = path.split("/")
-if not (len(segments) == 1):
-    print(f"ERROR: path must have 2 or 3 segments, got {len(segments)}: {path!r}", file=sys.stderr)
-    sys.exit(1)
 for seg in segments:
     if not re.fullmatch(r'[a-zA-Z0-9_-]+', seg):
         print(f"ERROR: invalid segment {seg!r} — only alphanumerics, hyphens, underscores allowed", file=sys.stderr)
