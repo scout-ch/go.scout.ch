@@ -1,0 +1,70 @@
+name: Add URL via Issue
+
+on:
+  issues:
+    types: [labeled]
+
+jobs:
+  add-url:
+    name: Add URL from issue
+    runs-on: ubuntu-latest
+    if: github.event.label.name == 'add-url'
+
+    permissions:
+      contents: write
+      pull-requests: write
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Install ruamel.yaml
+        run: pip install ruamel.yaml
+
+      - name: Parse issue body
+        id: parse
+        env:
+          ISSUE_BODY: ${{ github.event.issue.body }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+        run: python parse_issue.py
+
+      - name: Modify config.yml
+        env:
+          ENTRY_PATH: ${{ steps.parse.outputs.path }}
+          ENTRY_URL: ${{ steps.parse.outputs.url }}
+        run: python add_url.py
+
+      - name: Create branch and commit
+        env:
+          BRANCH: ${{ steps.parse.outputs.branch }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          ENTRY_PATH: ${{ steps.parse.outputs.path }}
+          ENTRY_URL: ${{ steps.parse.outputs.url }}
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git checkout -b "$BRANCH"
+          git add config.yml
+          git commit -m "add url: ${ENTRY_PATH} -> ${ENTRY_URL}
+
+          Closes #${ISSUE_NUMBER}"
+          git push origin "$BRANCH"
+
+      - name: Open pull request
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH: ${{ steps.parse.outputs.branch }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          ENTRY_PATH: ${{ steps.parse.outputs.path }}
+          ENTRY_URL: ${{ steps.parse.outputs.url }}
+        run: |
+          gh pr create \
+            --base main \
+            --head "$BRANCH" \
+            --title "Add URL: ${ENTRY_PATH}" \
+            --body "$(printf 'Adds redirect:\n\n- **Path**: `%s`\n- **Target**: %s\n\nCloses #%s' "$ENTRY_PATH" "$ENTRY_URL" "$ISSUE_NUMBER")"

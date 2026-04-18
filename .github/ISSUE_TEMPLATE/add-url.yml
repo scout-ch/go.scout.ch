@@ -1,0 +1,29 @@
+name: Add URL shortcut
+description: Request a new URL shortcut to be added to go.scout.ch
+title: "Add URL: "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Fill in the two fields below. A maintainer will review and merge your request.
+
+  - type: input
+    id: path
+    attributes:
+      label: Path
+      description: >
+        Slash-separated path segments, no leading slash.
+        Use 2 levels for top-level shortcuts (e.g. `qr/my-key`) or
+        3 levels for group shortcuts (e.g. `de/qrcube/my-key`).
+      placeholder: de/qrcube/my-new-link
+    validations:
+      required: true
+
+  - type: input
+    id: url
+    attributes:
+      label: Target URL
+      description: The full URL this path should redirect to.
+      placeholder: https://example.com/some/page
+    validations:
+      required: true
