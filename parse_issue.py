@@ -20,7 +20,7 @@ url = extract_field("Target URL", body)
 
 # Validate path: 2 or 3 slash-separated segments, safe characters only
 segments = path.split("/")
-if not (2 <= len(segments) <= 3):
+if not (len(segments) == 1):
     print(f"ERROR: path must have 2 or 3 segments, got {len(segments)}: {path!r}", file=sys.stderr)
     sys.exit(1)
 for seg in segments:
