@@ -18,12 +18,12 @@ issue_number = os.environ["ISSUE_NUMBER"]
 path = extract_field("Path", body)
 url = extract_field("Target URL", body)
 
-# Validate path: 2 or 3 slash-separated segments, safe characters only
-segments = path.split("/")
-for seg in segments:
-    if not re.fullmatch(r'[a-zA-Z0-9_-]+', seg):
-        print(f"ERROR: invalid segment {seg!r} — only alphanumerics, hyphens, underscores allowed", file=sys.stderr)
-        sys.exit(1)
+# Sanitize path: keep only valid segments, allow 1-5 total
+segments = [seg for seg in path.split("/") if re.fullmatch(r'[a-zA-Z0-9_-]+', seg)]
+if not (1 <= len(segments) <= 5):
+    print(f"ERROR: path must have 1-5 valid segments after sanitization, got {len(segments)}", file=sys.stderr)
+    sys.exit(1)
+path = "/".join(segments)
 
 # Validate URL
 if not re.match(r'https?://', url):
