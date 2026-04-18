@@ -1,6 +1,7 @@
 name: Add URL shortcut
 description: Request a new URL shortcut to be added to go.scout.ch
 title: "Add URL: "
+labels: [add-url]
 body:
   - type: markdown
     attributes:
