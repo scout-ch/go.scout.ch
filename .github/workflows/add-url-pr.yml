@@ -24,7 +24,7 @@ jobs:
           python-version: '3.x'
 
       - name: Install dependencies
-        run: pip install ruamel.yaml qrcode
+        run: pip install ruamel.yaml
 
       - name: Parse issue body
         id: parse
