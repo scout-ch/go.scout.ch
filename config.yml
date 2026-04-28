@@ -8,6 +8,8 @@ forwards:
       feuer: https://pfadi.swiss/de/wuerfel/it-community/
       kompass: https://pfadi.swiss/wuerfel/it-tools/
     itkompass: https://itkompass.scout.ch
+    test:
+      filou: https://www.heimv.ch
   fr:
     qrcube:
       tente: https://pfadi.swiss/fr/
